@@ -1,4 +1,5 @@
 import './App.css'
+import Prompt from './Prompt'
 import { TesteRef } from './TesteRef'
 
 function App() {
@@ -6,7 +7,8 @@ function App() {
  
   return (
     <div>
-      <TesteRef />
+      <Prompt />
+      {/* <TesteRef /> */}
     </div>
   )
 }
