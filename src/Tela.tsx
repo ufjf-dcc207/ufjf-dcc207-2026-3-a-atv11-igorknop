@@ -9,7 +9,7 @@ export default function Tela({x, y}: TelaProps) {
     const refCanvas = useRef(null);
     useEffect(() => {
         desenhar();
-    },[]);
+    },[x,y]);
 
     function desenhar() {
         console.log("desenhar!");
@@ -20,7 +20,9 @@ export default function Tela({x, y}: TelaProps) {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         ctx.fillStyle = "red";
+        ctx.beginPath();
         ctx.ellipse(x, y, 5, 5, 0, 0, 2*Math.PI, false);
+        ctx.closePath();
         ctx.fill();
 
 
