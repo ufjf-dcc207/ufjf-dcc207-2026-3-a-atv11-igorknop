@@ -6,9 +6,11 @@ type TelaProps = {
 }
 
 export default function Tela({x, y}: TelaProps) {
-    let x0 = 0;
     const refCanvas = useRef(null);
     const refAnimacao = useRef(-1);
+    const x0 = useRef(0);
+    const y0 = useRef(0);
+
     useEffect(() => {
         desenhar();
     },[x,y]);
@@ -23,11 +25,12 @@ export default function Tela({x, y}: TelaProps) {
             console.log("Cancelando...", refAnimacao.current)
             cancelAnimationFrame(refAnimacao.current);
         }
-    }, []);
+    }, [x,y]);
 
     function quadro(t) {
 
-        x0 = x0 + 1;
+        x0.current = x0.current + (x - x0.current)*0.16;
+        y0.current = y0.current + (y - y0.current)*0.16;
         desenhar();
 
         requestAnimationFrame(quadro)
@@ -43,7 +46,7 @@ export default function Tela({x, y}: TelaProps) {
 
         ctx.fillStyle = "red";
         ctx.beginPath();
-        ctx.ellipse(x+x0, y, 5, 5, 0, 0, 2*Math.PI, false);
+        ctx.ellipse(x0.current, y0.current, 5, 5, 0, 0, 2*Math.PI, false);
         ctx.closePath();
         ctx.fill();
 
