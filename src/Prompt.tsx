@@ -21,7 +21,7 @@ export default function Prompt() {
             <input ref={refInput} onChange={aoDigitar}/>
             <button onClick={aoExecutar}>Executar</button>
             <div>Comando: {comando}</div>
-            <Tela />
+            <Tela x={50} y={20}/>
         </div>
     );
 }
