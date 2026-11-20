@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import Tela from "./Tela";
 
 export default function Prompt() {
     const [entrada, setEntrada] = useState("");
@@ -20,6 +21,7 @@ export default function Prompt() {
             <input ref={refInput} onChange={aoDigitar}/>
             <button onClick={aoExecutar}>Executar</button>
             <div>Comando: {comando}</div>
+            <Tela />
         </div>
     );
 }
